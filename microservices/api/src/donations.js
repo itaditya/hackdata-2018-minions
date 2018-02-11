@@ -35,5 +35,9 @@ router.route("/").get((req, res) => {
     message: "donation received"
   });
 })
+router.get('/:startupId', (req, res) => {
+  const startupId = parseInt(req.params.startupId);
+  res.send(donations.filter(donation => donation.paid_to === startupId));
+})
 
 module.exports = router;
